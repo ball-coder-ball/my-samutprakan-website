@@ -1,18 +1,7 @@
-import { tavily } from '@tavily/js-sdk';
-
 const TAVILY_API_KEY = process.env.TAVILY_API_KEY;
 
 if (!TAVILY_API_KEY) {
   console.warn('TAVILY_API_KEY is not set in environment variables');
-}
-
-let tvly = null;
-try {
-  if (TAVILY_API_KEY) {
-    tvly = tavily({ apiKey: TAVILY_API_KEY });
-  }
-} catch (error) {
-  console.error('Failed to initialize Tavily:', error);
 }
 
 /**
@@ -22,27 +11,41 @@ try {
  * @returns {Promise<string>} - ข้อความสรุปจากผลการค้นหา
  */
 export async function searchWeb(query, maxResults = 5) {
-  if (!tvly) {
-    throw new Error('Tavily client not initialized. Check TAVILY_API_KEY');
+  if (!TAVILY_API_KEY) {
+    throw new Error('TAVILY_API_KEY not configured');
   }
 
   try {
-    const response = await tvly.search(query, {
-      searchDepth: 'basic',
-      maxResults,
-      includeAnswer: true,
-      includeImages: false,
-      includeRawContent: false,
+    const response = await fetch('https://api.tavily.com/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        api_key: TAVILY_API_KEY,
+        query: query,
+        search_depth: 'basic',
+        max_results: maxResults,
+        include_answer: true,
+        include_images: false,
+        include_raw_content: false,
+      }),
     });
 
-    // สร้างข้อความจากผลลัพธ์
-    let resultText = '';
-    if (response.answer) {
-      resultText += `คำตอบสรุป: ${response.answer}\n\n`;
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Tavily API error: ${errorText}`);
     }
-    if (response.results && response.results.length > 0) {
+
+    const data = await response.json();
+    
+    let resultText = '';
+    if (data.answer) {
+      resultText += `คำตอบสรุป: ${data.answer}\n\n`;
+    }
+    if (data.results && data.results.length > 0) {
       resultText += 'ข้อมูลเพิ่มเติม:\n';
-      response.results.forEach((r, idx) => {
+      data.results.forEach((r, idx) => {
         resultText += `${idx + 1}. ${r.title}: ${r.content}\n`;
       });
     }
@@ -54,7 +57,7 @@ export async function searchWeb(query, maxResults = 5) {
 }
 
 /**
- * ตรวจสอบว่าคำถามต้องค้นหาเว็บเพิ่มหรือไม่ (เบื้องต้น ใช้ heuristic)
+ * ตรวจสอบว่าคำถามต้องค้นหาเว็บเพิ่มหรือไม่
  */
 export function needsWebSearch(message) {
   const keywords = ['ข่าว', 'ล่าสุด', 'วันนี้', 'เดือนนี้', 'ปีนี้', 'ราคา', 'โปรโมชั่น', 'เปิดใหม่', 'ปรับปรุง'];

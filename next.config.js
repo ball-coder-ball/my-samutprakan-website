@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     domains: ['picsum.photos', 'upload.wikimedia.org', 'tourismthailand.org', 'trueid.net', 'postjung.com'],
   },
+  transpileOnly: true,
 };
 
 module.exports = nextConfig;
