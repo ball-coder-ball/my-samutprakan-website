@@ -5,7 +5,7 @@
     }
   },
   "env": {
-    "HUGGINGFACE_TOKEN": "@huggingface_token",
-    "TAVILY_API_KEY": "@tavily_api_key"
+    "HUGGINGFACE_TOKEN": "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",
+    "TAVILY_API_KEY": "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"
   }
 }
