@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "src/app/api/**/*.js": {
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "HUGGINGFACE_TOKEN": "@huggingface_token",
+    "TAVILY_API_KEY": "@tavily_api_key"
+  }
+}
