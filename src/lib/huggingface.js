@@ -1,6 +1,8 @@
 // ใช้โมดูลของ Node.js (fetch มีใน Next.js API routes)
+// อัปเดต: Hugging Face ยกเลิก api-inference.huggingface.co แล้ว
+// ตอนนี้ใช้ router.huggingface.co (OpenAI-compatible chat completions)
 
-const MODEL_ID = 'google/gemma-4-E2B-it';
+const MODEL_ID = 'Qwen/Qwen3-0.6B:featherless-ai';
 const HF_TOKEN = process.env.HUGGINGFACE_TOKEN;
 
 if (!HF_TOKEN) {
@@ -8,7 +10,7 @@ if (!HF_TOKEN) {
 }
 
 /**
- * ส่งข้อความไปยัง Gemma-4-E2B-it ผ่าน Hugging Face Inference API
+ * ส่งข้อความไปยัง Gemma ผ่าน Hugging Face Router (Inference Providers)
  * @param {string} prompt - ข้อความที่จะส่ง (รวม system prompt และ user)
  * @param {Object} params - พารามิเตอร์เพิ่มเติม (max_new_tokens, temperature, etc.)
  * @returns {Promise<string>} - ข้อความตอบกลับ
@@ -19,25 +21,19 @@ export async function queryGemma(prompt, params = {}) {
   }
 
   const response = await fetch(
-    `https://api-inference.huggingface.co/models/${MODEL_ID}`,
+    'https://router.huggingface.co/v1/chat/completions',
     {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${HF_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      method: 'POST',
       body: JSON.stringify({
-        inputs: prompt,
-        parameters: {
-          max_new_tokens: 512,
-          temperature: 0.7,
-          top_p: 0.95,
-          do_sample: true,
-          ...params,
-        },
-        options: {
-          wait_for_model: true, // รอให้โมเดลพร้อม (อาจใช้เวลานาน)
-        },
+        model: MODEL_ID,
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: params.max_new_tokens || 512,
+        temperature: params.temperature ?? 0.7,
+        top_p: params.top_p ?? 0.95,
       }),
     }
   );
@@ -48,11 +44,7 @@ export async function queryGemma(prompt, params = {}) {
   }
 
   const result = await response.json();
-  // ผลลัพธ์อาจอยู่ในรูปแบบ array หรือ object ขึ้นอยู่กับโมเดล
-  if (Array.isArray(result) && result.length > 0) {
-    return result[0]?.generated_text || '';
-  }
-  return result.generated_text || '';
+  return result.choices?.[0]?.message?.content || '';
 }
 
 /**
