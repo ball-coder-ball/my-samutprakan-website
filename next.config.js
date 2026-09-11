@@ -1,12 +1,1 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
-  images: {
-    domains: ['picsum.photos', 'upload.wikimedia.org', 'tourismthailand.org', 'trueid.net', 'postjung.com'],
-  },
-  transpileOnly: true,
-};
-
-module.exports = nextConfig;
+/** @type {import('next').NextConfig} */ const nextConfig = { images: { remotePatterns: [ { protocol: 'https', hostname: 'picsum.photos' }, { protocol: 'https', hostname: 'upload.wikimedia.org' }, { protocol: 'https', hostname: 'tourismthailand.org' }, { protocol: 'https', hostname: 'trueid.net' }, { protocol: 'https', hostname: 'postjung.com' }, ], }, }; module.exports = nextConfig;
