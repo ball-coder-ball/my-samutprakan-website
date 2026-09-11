@@ -61,7 +61,7 @@ export default function HomePage() {
         <h2 className="text-xl font-bold text-[#1e5a3a] mb-3">🎬 แนะนำสมุทรปราการใน 20 วินาที</h2>
         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-md">
           <iframe
-            src="https://youtu.be/6FYCEvt1XKM?si=QR5cXQ9NbAkMM-5Y"
+            src="https://www.youtube.com/embed/6FYCEvt1XKM"
             title="แนะนำเที่ยวสมุทรปราการ"
             className="absolute inset-0 w-full h-full"
             allowFullScreen

@@ -10,6 +10,7 @@ export default function Navbar() {
   const links = [
     { href: '/', label: 'หน้าแรก' },
     { href: '/places', label: 'สถานที่' },
+    { href: '/ai-process', label: 'เบื้องหลัง AI' },
   ];
 
   return (
