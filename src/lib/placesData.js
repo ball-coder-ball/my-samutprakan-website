@@ -1,5 +1,5 @@
 // ข้อมูลสถานที่ท่องเที่ยวสมุทรปราการ (เก็บเป็น Array ของ Object)
-// รูปภาพเป็น URL จากอินเทอร์เน็ตจริง (Wikimedia Commons, ฯลฯ)
+// รูปภาพเก็บไว้ใน public/images (ดาวน์โหลดจาก Wikimedia Commons)
 export const places = [
   {
     id: 1,
@@ -11,12 +11,10 @@ export const places = [
     highlight: 'พิพิธภัณฑ์กลางแจ้งขนาด 800 ไร่ จำลองสถาปัตยกรรมไทยจากทุกภาค',
     description:
       'เมืองโบราณก่อตั้งขึ้นในปี พ.ศ. 2506 โดยคุณเล็ก วิริยะพันธุ์ เป็นพิพิธภัณฑ์กลางแจ้งที่รวบรวมและจำลองสถานที่สำคัญทางประวัติศาสตร์และวัฒนธรรมจากทั่วประเทศไทยไว้ในพื้นที่เดียวกัน รวมกว่า 100 จุด แต่ละแห่งสร้างด้วยความประณีต ใช้ขนาด 3/4 ของของจริง เหมาะสำหรับการเรียนรู้ประวัติศาสตร์และศิลปวัฒนธรรมไทย',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ancient_City_%28Muang_Boran%29_Thailand_01.jpg/800px-Ancient_City_%28Muang_Boran%29_Thailand_01.jpg',
-    gallery: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Muang_Boran_06.jpg/800px-Muang_Boran_06.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ancient_City_02.jpg/800px-Ancient_City_02.jpg',
-    ],
+    image: '/images/ancient-city.jpg',
+    gallery: [],
     source: 'https://www.muangboranmuseum.com',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.muangboranmuseum.com',
   },
   {
     id: 2,
@@ -28,12 +26,10 @@ export const places = [
     highlight: 'รูปปั้นช้างสามเศียรสูง 43.6 เมตร หล่อด้วยทองแดงหนัก 250 ตัน',
     description:
       'พิพิธภัณฑ์ช้างเอราวัณเริ่มก่อสร้างในปี พ.ศ. 2537 และเปิดให้บริการในปี พ.ศ. 2546 เป็นหนึ่งในสัญลักษณ์สำคัญของจังหวัด ภายในแบ่งเป็น 3 ชั้น แทนจักรวาลตามคติไตรภูมิ ได้แก่ ชั้นบาดาล (ใต้ดิน), ชั้นมนุษย์ (กลาง), และชั้นสวรรค์ (ยอดช้าง) มีโบราณวัตถุและศิลปวัตถุอันล้ำค่ามากมาย',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Erawan_Museum_03.jpg/800px-Erawan_Museum_03.jpg',
-    gallery: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Erawan_Museum_Interior.jpg/800px-Erawan_Museum_Interior.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Erawan_Museum_01.jpg/800px-Erawan_Museum_01.jpg',
-    ],
+    image: '/images/erawan-museum.jpg',
+    gallery: [],
     source: 'https://www.erawan-museum.com',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.erawan-museum.com',
   },
   {
     id: 3,
@@ -45,11 +41,10 @@ export const places = [
     highlight: 'ชมนกนางนวลอพยพช่วงฤดูหนาว และพระอาทิตย์ตกที่สวยงาม',
     description:
       'บางปูเป็นสถานที่พักผ่อนหย่อนใจยอดนิยมของคนกรุงและชาวสมุทรปราการ มีเส้นทางเดินเลียบชายทะเล ต้นสน และนกนางนวลจำนวนมากที่อพยพมาจากไซบีเรียในช่วงเดือนพฤศจิกายนถึงกุมภาพันธ์ จุดเด่นคือพระอาทิตย์ตกดินเหนืออ่าวไทยที่สวยงาม',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Bang_Pu_Beach_01.jpg/800px-Bang_Pu_Beach_01.jpg',
-    gallery: [
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bang_Pu_Sunset.jpg/800px-Bang_Pu_Sunset.jpg',
-    ],
+    image: '/images/bang-pu.jpg',
+    gallery: [],
     source: 'https://www.tourismthailand.org',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.tourismthailand.org',
   },
   {
     id: 4,
@@ -58,12 +53,13 @@ export const places = [
     address: 'ตำบลพระสมุทรเจดีย์, อำเภอพระสมุทรเจดีย์, จ.สมุทรปราการ 10290',
     time: '08:00 - 18:00 (ทุกวัน)',
     fee: 'เข้าชมฟรี',
-    highlight: 'เจดีย์สีขาวสูงตระหง่าน แลนด์มาร์クสำคัญริมแม่น้ำเจ้าพระยา',
+    highlight: 'เจดีย์สีขาวสูงตระหง่าน แลนด์มาร์กสำคัญริมแม่น้ำเจ้าพระยา',
     description:
       'พระสมุทรเจดีย์เป็นเจดีย์เก่าแก่ที่สร้างขึ้นในสมัยกรุงศรีอยุธยา ปัจจุบันเป็นสัญลักษณ์ของจังหวัดสมุทรปราการ ตั้งอยู่บริเวณปากแม่น้ำเจ้าพระยา มีความสูง 20 เมตร ฐานกว้าง 12 เมตร ภายในบรรจุพระบรมสารีริกธาตุ เป็นสถานที่ศักดิ์สิทธิ์ที่ชาวบ้านให้ความเคารพ',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Phra_Samut_Chedi_01.jpg/800px-Phra_Samut_Chedi_01.jpg',
+    image: '/images/phra-samut-chedi.jpg',
     gallery: [],
     source: 'https://www.samutprakan.go.th',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.samutprakan.go.th',
   },
   {
     id: 5,
@@ -75,9 +71,10 @@ export const places = [
     highlight: 'ป้อมปืนใหญ่สมัยรัชกาลที่ 5 ใช้ป้องกันปากอ่าวไทย',
     description:
       'ป้อมพระจุลจอมเกล้าสร้างขึ้นในปี พ.ศ. 2436 ตามพระราชดำริของพระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว เพื่อป้องกันการรุกรานทางทะเล ปัจจุบันเป็นอนุสรณ์สถานทางประวัติศาสตร์ ภายในมีปืนใหญ่ขนาดใหญ่และพิพิธภัณฑ์ให้ความรู้',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Phra_Chulachomklao_Fort_01.jpg/800px-Phra_Chulachomklao_Fort_01.jpg',
+    image: '/images/chulachomklao-fort.jpg',
     gallery: [],
     source: 'https://www.royalthaiarmy.com',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.royalthaiarmy.com',
   },
   {
     id: 6,
@@ -89,9 +86,10 @@ export const places = [
     highlight: 'ตลาดน้ำที่ยังคงวิถีชีวิตดั้งเดิม ขนมไทยและของฝาก',
     description:
       'ตลาดน้ำบางน้ำผึ้งตั้งอยู่ริมคลองในพื้นที่อำเภอพระประแดง ยังคงบรรยากาศความเป็นตลาดน้ำไทยโบราณ มีเรือขายอาหารและของฝากมากมาย นักท่องเที่ยวสามารถนั่งชมวิถีชีวิตและชิมอาหารท้องถิ่น เช่น ขนมไทย อาหารทะเลสด และผลไม้ตามฤดูกาล',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bang_Nam_Phueng_Market_01.jpg/800px-Bang_Nam_Phueng_Market_01.jpg',
+    image: '/images/bang-nam-phueng.jpg',
     gallery: [],
     source: 'https://www.tourismthailand.org',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.tourismthailand.org',
   },
   {
     id: 7,
@@ -103,9 +101,10 @@ export const places = [
     highlight: 'พระพุทธรูปปางมารวิชัยขนาดใหญ่ องค์หลวงพ่อโต',
     description:
       'วัดบางพลีใหญ่ในเป็นวัดเก่าแก่อายุกว่า 200 ปี มีพระพุทธรูปหลวงพ่อโต (พระพุทธศรีสุริโย) เป็นพระประธานขนาดใหญ่ ปางมารวิชัย สูงประมาณ 6 เมตร เป็นที่เคารพสักการะของประชาชน มีความเชื่อเรื่องความศักดิ์สิทธิ์',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Wat_Bang_Phli_Yai_Nai_01.jpg/800px-Wat_Bang_Phli_Yai_Nai_01.jpg',
+    image: '/images/wat-bang-phli-yai-nai.jpg',
     gallery: [],
     source: 'https://www.watbangpliyai.com',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.watbangpliyai.com',
   },
   {
     id: 8,
@@ -117,9 +116,10 @@ export const places = [
     highlight: 'แหล่งเพาะเลี้ยงจระเข้ที่ใหญ่ที่สุดในโลก มีการแสดงจระเข้และสัตว์นานาชนิด',
     description:
       'ฟาร์มจระเข้สมุทรปราการก่อตั้งขึ้นในปี พ.ศ. 2493 เป็นศูนย์เพาะเลี้ยงและอนุรักษ์จระเข้ที่ใหญ่ที่สุดในโลก มีจระเข้มากกว่า 60,000 ตัว นอกจากนี้ยังมีสวนสัตว์เล็กๆ และการแสดงของสัตว์ เช่น ช้าง ลิง และการแสดงจระเข้ดึงหัว นับเป็นแหล่งท่องเที่ยวสำหรับครอบครัว',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Samut_Prakan_Crocodile_Farm_01.jpg/800px-Samut_Prakan_Crocodile_Farm_01.jpg',
+    image: '/images/crocodile-farm.jpg',
     gallery: [],
     source: 'https://www.crocodilefarm.com',
+    imageCaption: 'ภาพจาก Wikimedia Commons (CC BY / CC BY-SA) · ข้อมูลจาก https://www.crocodilefarm.com',
   },
 ];
 
