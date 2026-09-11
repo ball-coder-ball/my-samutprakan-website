@@ -3,9 +3,5 @@
     "src/app/api/**/*.js": {
       "maxDuration": 60
     }
-  },
-  "env": {
-    "HUGGINGFACE_TOKEN": "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",
-    "TAVILY_API_KEY": "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"
   }
 }
