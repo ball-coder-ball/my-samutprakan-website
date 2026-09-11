@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <footer className="bg-[#1e3a2f] text-white text-center py-6 mt-12">
           <div className="container mx-auto px-4">
             <p>🌏 <span className="text-yellow-300">เที่ยว</span>สมุทรปราการ — โปรเจกต์เว็บไซต์ท่องเที่ยวสำหรับนักเรียน</p>
-            <p className="text-sm text-gray-400 mt-1">จัดทำโดย นาย สมชาย ใจดี รหัส 66123456 | ชั้น ม.6/1</p>
+            <p className="text-sm text-gray-400 mt-1">จัดทำโดย นายวีรภัสส์ มงคลชัยวสุ 691211419</p>
             <p className="text-xs text-gray-500 mt-2">ข้อมูลอ้างอิงจากแหล่งทางการ | ใช้ AI ช่วยในการสร้างเนื้อหา</p>
           </div>
         </footer>

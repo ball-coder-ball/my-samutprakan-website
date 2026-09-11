@@ -57,6 +57,18 @@ export default function HomePage() {
         )}
       </div>
 
+      <section className="my-8">
+        <h2 className="text-xl font-bold text-[#1e5a3a] mb-3">🎬 แนะนำสมุทรปราการใน 20 วินาที</h2>
+        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-md">
+          <iframe
+            src="https://youtu.be/6FYCEvt1XKM?si=QR5cXQ9NbAkMM-5Y"
+            title="แนะนำเที่ยวสมุทรปราการ"
+            className="absolute inset-0 w-full h-full"
+            allowFullScreen
+          />
+        </div>
+      </section>
+
       <h2 className="text-2xl font-semibold text-[#1e5a3a] mb-4">🔥 สถานที่แนะนำ</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedPlaces.map((place) => (
